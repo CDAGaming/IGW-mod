@@ -29,7 +29,7 @@ repositories {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 project.ext {
-	massive = "1"
+    massive = "1"
     major = "4"
     minor = "3"
     mcVersion = "1.12.2"
@@ -44,12 +44,12 @@ archivesBaseName = "IGW-Mod"
 if (System.getenv().BUILD_NUMBER != null) {
     version += "-${System.getenv().BUILD_NUMBER}"
 } else {
-    version += "-err"
+    version += "-CUSTOM"
 }
 
 def grabDep(url) {
     ant.get(src: url, dest: 'dep')
-	compile files("dep/" + url.substring(url.lastIndexOf("/")));
+	compile files("dep/" + url.substring(url.lastIndexOf("/")))
 }
 
 dependencies {
@@ -68,15 +68,15 @@ dependencies {
 }
 
 minecraft {
-    version = "1.12.2-14.23.0.2528"
+    version = "1.12.2-14.23.1.2604"
     runDir = "eclipse"
     
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not allways work.
+    // Use non-default mappings at your own risk. they may not always work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20171031"
+    mappings = "snapshot_20180124"
 
     // replacing stuff in the source
 	replace '@MASSIVE@', project.massive
@@ -128,7 +128,7 @@ processResources
         expand 'version':version, 'mcversion':project.minecraft.version
     }
         
-    // copy everything else, thats not the mcmod.info
+    // copy everything else, that's not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
